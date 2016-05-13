@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Implements BST with lazy deletion to keep track of total inventory ("deleted" + non deleted) 
  * and current inventory (non deleted only).
  *
- * @author Foothill College, [YOUR NAME HERE]
+ * @author Foothill College, [Swati Gupta]
  */
 public class SuperMarket 
 {
@@ -42,19 +42,29 @@ public class SuperMarket
 		// Check if the item is in the inventory tree.
 		boolean isFound = inventory.contains(tmp);
 
-		// If the item is not found, add the temporary object as another node (category) to the tree.
-		if (!isFound)
-		{
-			// TODO: Modify insert method to work with lazy deletion such that it updates
-			//       both hard and soft sizes. 
-			inventory.insert(tmp);
-			return;
-		}
+		 if (!isFound)
+	        {
+	            // TODO: Modify insert method to work with lazy deletion such that it updates
+	            // both hard and soft sizes. 
+	            inventory.insert(tmp);
+	            
+	            // NOTE: Need to check if the item was lazily deleted, then we need to increment the count
+	            Item found = inventory.find(tmp);
+	            if (found.getCount() == 0)
+	            {
+	                found.incrementCount();
+	            }
+	            
+	            // avoid double incrementing a newly inserted item
+	            return;
+	        }
 
-		// If the item is found, increase the number of items in that item category.
-		Item found = inventory.find(tmp);
-		found.incrementCount();
-	}
+	        // If the item is found, increase the number of items in that item category.
+	        Item found = inventory.find(tmp);
+	        
+	        // item was previously in tree, so increment the count
+	        found.incrementCount();
+	    }
 
 	/**
 	 * If the item is in the inventory, decrease the count by one. 
@@ -103,13 +113,31 @@ public class SuperMarket
 	 */
 	public void showFirstAndLastItem(String message)
 	{
-		System.out.println("\n" + message);
+	    System.out.println("\n" + message);
 
-		// TODO: Modify the protected methods findMin() and findMax() to implement lazy deletion. 
-		//       Searches from the root of the tree and return sthe minimum and maximum node that 
-		//       has NOT been "deleted". 
-		System.out.println ( "First item: " + inventory.findMin().toString());
-		System.out.println ( "Last item: " + inventory.findMax().toString());
+	    // TODO: Modify the protected methods findMin() and findMax() to implement lazy deletion. 
+	    //       Searches from the root of the tree and return sthe minimum and maximum node that 
+	    //       has NOT been "deleted". 
+	    try
+	    {
+	        Item min = inventory.findMin();
+	        System.out.println ( "First item: " + min.toString());
+	    } 
+	    catch (Exception NoSuchElementException)
+	    {
+	        System.out.println("Warning: minimum element not found!");
+	    }
+	    
+	    try
+	    {
+	        Item max = inventory.findMax();
+	        System.out.println ( "Last item: " + max.toString());
+	    } 
+	    catch (Exception NoSuchElementException)
+	    {
+	        System.out.println("Warning: minimum element not found!");
+	    }
+
 	}
 
 	/**
@@ -152,10 +180,15 @@ public class SuperMarket
 		final String TESTFILE = "resources/inventory_log.txt";	// Directory path for plain-text file
 
 		// NOTE: Short inventory file to test for removal of root node from LazySearchTree
-		//final String TESTFILE = "resources/inventory_short.txt";	
+//		final String TESTFILE = "resources/inventory_short.txt";	
 
 		// NOTE: An example of testing the boundary condition when removing an item that may not exist
-		//final String TESTFILE = "resources/inventory_invalid_removal.txt";	
+//		final String TESTFILE = "resources/inventory_invalid_removal.txt";	
+		
+		// additional test files
+//		final String TESTFILE = "resources/inventory_findMax()_testcase.txt";
+		
+//		final String TESTFILE = "resources/inventory_empty_tree_testcase.txt";
 
 		System.out.printf("Test file: %s \n", TESTFILE);
 

@@ -1,0 +1,14 @@
+add pie
+add tomato
+add cake
+add fish
+add chicken
+add cereal
+add cookies
+buy pie
+buy tomato
+buy cake
+buy fish
+buy chicken
+buy cereal
+buy cookies

@@ -1,0 +1,6 @@
+Parsing JSON file...
+Completed parsing JSON file.
+Sorting array of 59600 songs via BubbleSort...
+
+Algorithm Elapsed Time: 0 hrs : 0 mins : 24 sec : 931 ms : 927000 ns : ,  seconds.
+

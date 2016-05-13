@@ -1,11 +1,11 @@
-add soup
-add soup
 add milk
 add milk
+add soup
+add soup
 add apples
 add tomato
-add avocado
 add eggplant
+add avocado
 add tomato
 add onion
 add beans
