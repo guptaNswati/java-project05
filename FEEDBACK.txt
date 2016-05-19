@@ -1,0 +1,26 @@
+FEEDBACK:
+
+Nice clean implementation of your LazySearchTree class with lazy deletion!
+
+
+-0 For future, include all RUN files in resources folder.
+
+
+-1 Missing documentation for your classes, etc in Javadocs.
+	I see that you commented your source code for FoothillTunesStore.
+	Why are you excluding documentation for key methods of LazySearchTree class?
+	 
+	Perhaps you forgot to generate Javadocs as required by project?
+    See feedback from previous project.
+    
+    Next time minus two for this.
+
+
+Extra Credit:
++2 Good testing of lazy removal in FoothillTuneStore.
+
++2 Good testing of findMin() and findMax() in class FoothillTuneStore.
+
+
+-Bita.
+
